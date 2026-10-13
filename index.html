@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  SITE RHAVILA MAISON — GUIA RÁPIDO
+  ============================================================
+  Este arquivo tem 3 partes:
+    1) <style>  = o DESIGN (cores, fontes, tamanhos)
+    2) <body>   = o CONTEÚDO (textos, preços, botões)
+    3) Os comentários como este explicam onde mexer.
+
+  O QUE EDITAR MAIS VEZES (use Ctrl+F e procure pelo termo):
+    - Número do WhatsApp ......... procure  WHATSAPP
+    - Preços e descrições ........ procure  PREÇO
+    - Cores ...................... procure  CORES
+    - Sua foto ................... procure  FOTO
+    - Textos do topo ............. procure  TOPO
+
+  IMPORTANTE: o arquivo foto.jpg precisa ficar NA MESMA PASTA
+  deste index.html para a foto aparecer.
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- Título que aparece na aba do navegador e no Google -->
+<title>Rhavila Maison | Estética facial e corporal</title>
+
+<!-- Fontes elegantes do Google Fonts (precisa de internet).
+     Cormorant Garamond = títulos | Jost = textos corridos -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   CORES, FOTO E AJUSTES GERAIS
+   Tudo que é "variável" fica aqui. Mude uma vez, muda no site todo.
+   ========================================================= */
+:root{
+  /* ---------- CORES ---------- */
+  --bg:#000;            /* fundo principal (preto) */
+  --bg2:#151413;        /* fundo das seções alternadas (cinza bem escuro) */
+  --ink:#f5f1ea;        /* cor do texto principal (branco quente) */
+  --mute:#b9b0a4;       /* cor dos textos secundários (descrições) */
+  --gold:#d8b87d;       /* dourado champagne: preços, destaques, hover */
+  --line:#2e2b28;       /* cor das linhas finas separadoras */
+
+  /* ---------- FOTO ----------
+     Para trocar a foto: substitua o arquivo foto.jpg por outro
+     (com o mesmo nome) OU mude o nome aqui embaixo. */
+  --ph:url("foto.jpg");
+
+  /* Ajustes técnicos (não precisa mexer) */
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);      /* respeita o "notch" do celular */
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}   /* rolagem suave ao clicar no menu */
+
+/* Corpo da página: fonte e tamanho do texto padrão.
+   Para aumentar o texto do site todo, mude 17px abaixo. */
+body{margin:0;background:var(--bg);color:var(--ink);font:300 17px/1.7 "Jost",system-ui,sans-serif}
+
+/* Todos os títulos usam a fonte serifada elegante */
+h1,h2,h3,.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}  /* contorno ao navegar pelo teclado */
+
+/* Largura máxima do conteúdo (1100px). Aumente para um site mais "aberto". */
+.wrap{max-width:1100px;margin:auto;padding:0 24px}
+
+/* =========================================================
+   BARRA DO TOPO (frase pequena acima do logo)
+   ========================================================= */
+.top{text-align:center;font-size:13px;letter-spacing:.12em;padding:10px 12px;color:var(--mute);border-bottom:1px solid var(--line)}
+
+/* =========================================================
+   CABEÇALHO: logo + menu
+   ========================================================= */
+header{text-align:center;padding:44px 16px 22px}
+/* Tamanho do logo "Rhavila Maison": o 1º número (60px) é o mínimo no celular,
+   o último (104px) é o máximo no computador. */
+.brand{display:block;text-decoration:none;font:400 clamp(60px,10vw,104px)/.85 "Cormorant Garamond",serif}
+.brand i{display:block;font-size:.6em;margin-top:.1em}   /* a palavra "Maison" em itálico, menor */
+.sub{font-size:12px;letter-spacing:.3em;color:var(--mute);margin:14px 0 30px}  /* "ESTÉTICA FACIAL E CORPORAL" */
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 30px;font-size:14px}  /* gap = espaço entre os links */
+nav a{text-decoration:none;color:var(--mute)}
+nav a:hover{color:#fff}
+
+/* =========================================================
+   HERO (faixa grande com 3 colunas: foto | título | detalhe da foto)
+   ========================================================= */
+.hero{display:grid;grid-template-columns:1fr 1.2fr 1fr;min-height:480px}  /* proporção das 3 colunas; min-height = altura */
+.hp{background:var(--ph) center top/cover;filter:grayscale(.2)}  /* coluna esquerda: foto inteira */
+/* Coluna direita: um "zoom" na foto (chapéu e mãos).
+   Os números "20% 82%" escolhem a parte da foto; "280%" é o zoom. */
+.hp.r{background:var(--ph) 20% 82%/280%}
+/* Coluna do meio (fundo escuro com brilho dourado atrás do título) */
+.hc{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:radial-gradient(circle at 50% 40%,#3a2c20,#0b0907 75%)}
+.hc .s{font:italic 400 clamp(32px,4vw,48px)/1 "Cormorant Garamond",serif;color:var(--gold)}  /* "Beleza nos" */
+.hc h1{font-size:clamp(46px,6vw,76px);letter-spacing:.05em;line-height:1}                    /* "DETALHES" */
+/* Caixa com borda: "CUIDADO EM CADA RITUAL" */
+.box{margin:22px 0 28px;padding:10px 22px;border:1px solid #6d6258;box-shadow:0 0 18px rgba(216,184,125,.25);font:400 clamp(18px,2vw,24px) "Cormorant Garamond",serif;letter-spacing:.14em;background:#080706}
+
+/* Botão branco (usado em todo o site). Fica dourado ao passar o mouse. */
+.btn{display:inline-block;background:#fff;color:#000;padding:13px 30px;text-decoration:none;font-size:15px;letter-spacing:.04em}
+.btn:hover{background:var(--gold)}
+
+/* Títulos de seção (CUIDADOS FACIAIS, SOBRE A MAISON...) — sempre em caixa alta */
+h2{font-size:clamp(30px,4vw,42px);letter-spacing:.06em;text-transform:uppercase}
+
+/* =========================================================
+   "NOSSOS CUIDADOS" (cartões coloridos que levam às seções)
+   ========================================================= */
+.cats{padding:80px 0 72px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 18px;margin-top:30px}  /* 3 colunas no computador */
+.cat{text-decoration:none}
+.tile{display:flex;align-items:flex-end;aspect-ratio:5/4;padding:16px;position:relative;font-size:15px;color:#fff}  /* aspect-ratio = formato do cartão */
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent 65%)}  /* sombra embaixo para o texto ler bem */
+.tile em{position:relative;z-index:1;font-style:normal}
+.lab{display:block;margin-top:10px;font:400 18px "Cormorant Garamond",serif;letter-spacing:.08em;text-transform:uppercase}  /* legenda com seta */
+.cat:hover .lab{color:var(--gold)}
+
+/* =========================================================
+   SOBRE A MAISON (colagem de fotos + texto)
+   ========================================================= */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:30px 0 90px}
+.col{position:relative;height:480px}    /* altura da colagem */
+.col div{position:absolute;background-repeat:no-repeat}
+.c1{left:8%;top:0;width:62%;height:100%;background:var(--ph) center top/cover}             /* foto grande */
+.c2{right:0;top:8%;width:34%;height:36%;background:var(--ph) 20% 82%/340%}                 /* foto pequena (chapéu/mãos) */
+.c3{left:0;bottom:6%;width:36%;height:30%;background:var(--ph) 45% 10%/330%;border:4px solid #000}  /* foto pequena (rosto) */
+.about p{color:var(--mute);max-width:46ch}
+.about .btn{margin-top:12px}
+
+/* =========================================================
+   SEÇÕES DE SERVIÇOS (cardápio com preços)
+   ========================================================= */
+.sec{padding:80px 0;background:var(--bg)}     /* fundo preto */
+.sec.g{background:var(--bg2)}                 /* classe "g" = fundo cinza escuro (alterna) */
+.sec.pv{background:#1b150d;border-top:1px solid #4a3b22;border-bottom:1px solid #4a3b22}  /* classe "pv" = Maison Privé (tom dourado escuro) */
+.head{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;align-items:end}   /* título à esquerda, texto à direita */
+.head p{margin:0;color:var(--mute);max-width:52ch}
+.menu{list-style:none;margin:40px 0 0;padding:0}
+.menu li{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:2px 24px}
+.menu h3{font-size:28px}                      /* nome do procedimento */
+.menu p{margin:0;color:var(--mute);max-width:62ch}   /* descrição */
+.price{grid-column:2;grid-row:1;font:500 22px "Cormorant Garamond",serif;color:var(--gold);text-align:right;white-space:nowrap}  /* preço em dourado */
+.note{font-size:14px;color:var(--mute);margin:20px 0 0;max-width:70ch}   /* observações pequenas */
+
+/* Agendamento: 2 colunas */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px}
+.cols h3{font-size:30px;margin-bottom:8px}
+ol{padding-left:20px;margin:12px 0 0;color:var(--mute)}
+
+/* Rodapé */
+footer{padding:48px 16px;text-align:center;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+footer b{display:block;font:400 28px "Cormorant Garamond",serif;color:var(--ink);margin-bottom:4px}
+
+/* =========================================================
+   VERSÃO CELULAR (telas com até 800px de largura)
+   ========================================================= */
+@media(max-width:800px){
+  .hero{grid-template-columns:1fr;min-height:0}   /* hero vira 1 coluna só */
+  .hp{display:none}                                /* esconde as fotos laterais no celular */
+  .hc{padding:56px 20px}
+  .grid{grid-template-columns:repeat(2,1fr)}      /* cartões: 2 por linha */
+  .about,.head,.cols{grid-template-columns:1fr;gap:28px}  /* tudo empilhado */
+  .col{height:380px}
+  .wrap{padding:0 18px}
+  .sec{padding:56px 0}
+  .cats{padding:56px 0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- ===================== TOPO: frase acima do logo ===================== -->
+<div class="top">Beleza nos detalhes. Cuidado em cada ritual.</div>
+
+<!-- ===================== CABEÇALHO: logo e menu ===================== -->
+<header id="topo">
+  <!-- Logo: "Rhavila" + "Maison" (a palavra dentro de <i> fica em itálico embaixo) -->
+  <a class="brand" href="#topo">Rhavila<i>Maison</i></a>
+  <p class="sub">ESTÉTICA FACIAL E CORPORAL</p>
+
+  <!-- MENU: o href="#faciais" leva para a seção com id="faciais".
+       Para mudar o nome de um link, mude só o texto entre > e </a> -->
+  <nav aria-label="Principal">
+    <a href="#faciais">Cuidados Faciais</a>
+    <a href="#corporais">Cuidados Corporais</a>
+    <a href="#especializados">Especializados</a>
+    <a href="#prive">Maison Privé</a>
+    <a href="#pacotes">Pacotes &amp; Planos</a>
+    <a href="#agendar">Agendamento</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ===================== HERO: faixa principal com 3 colunas ===================== -->
+<div class="hero">
+  <!-- FOTO (esquerda): usa foto.jpg -->
+  <div class="hp" role="img" aria-label="Rhavila, esteticista da Rhavila Maison"></div>
+
+  <!-- TEXTO CENTRAL: mude os textos à vontade -->
+  <div class="hc">
+    <span class="s">Beleza nos</span>
+    <h1>DETALHES</h1>
+    <div class="box">CUIDADO EM CADA RITUAL</div>
+    <a class="btn" href="#agendar">Agendar agora</a>   <!-- leva até a seção de agendamento -->
+  </div>
+
+  <!-- FOTO (direita): zoom no detalhe da mesma foto -->
+  <div class="hp r" role="img" aria-label="Detalhe da foto de Rhavila"></div>
+</div>
+
+<!-- ===================== NOSSOS CUIDADOS: cartões de navegação =====================
+     Cada cartão é um <a href="#secao">. A cor vem do "background:linear-gradient(...)".
+     Para trocar por FOTO real, troque o style por:
+     style="background:url('minha-foto.jpg') center/cover"                          -->
+<section class="cats">
+  <div class="wrap">
+    <h2>Nossos cuidados</h2>
+    <div class="grid">
+      <a class="cat" href="#faciais"><span class="tile" style="background:linear-gradient(160deg,#d9c3b0,#7a5d4b)"><em>Limpeza, hidratação e pele acneica</em></span><span class="lab">Cuidados Faciais →</span></a>
+      <a class="cat" href="#corporais"><span class="tile" style="background:linear-gradient(160deg,#c9a99a,#4f3a31)"><em>Drenagem linfática</em></span><span class="lab">Cuidados Corporais →</span></a>
+      <a class="cat" href="#especializados"><span class="tile" style="background:linear-gradient(160deg,#b9a07a,#352a1e)"><em>Cuidado estético das axilas</em></span><span class="lab">Especializados →</span></a>
+      <a class="cat" href="#prive"><span class="tile" style="background:linear-gradient(160deg,#e0c48c,#2a2016)"><em>Experiências exclusivas</em></span><span class="lab">Maison Privé →</span></a>
+      <a class="cat" href="#pacotes"><span class="tile" style="background:linear-gradient(160deg,#9a8f87,#1b1816)"><em>Combos e acompanhamento</em></span><span class="lab">Pacotes &amp; Planos →</span></a>
+      <a class="cat" href="#agendar"><span class="tile" style="background:linear-gradient(160deg,#e6cfc4,#5e463c)"><em>Reserve pelo WhatsApp</em></span><span class="lab">Agendamento →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE A MAISON ===================== -->
+<div class="wrap about" id="sobre">
+  <!-- Colagem de fotos (as 3 divs usam foto.jpg em recortes diferentes) -->
+  <div class="col"><div class="c1"></div><div class="c2"></div><div class="c3"></div></div>
+  <!-- Texto: edite aqui a sua história, formação, diferenciais -->
+  <div>
+    <h2>Sobre a Maison</h2>
+    <p style="margin-top:22px">A Rhavila Maison nasceu para tornar o cuidado com a pele um momento de pausa.</p>
+    <p>Cada atendimento é individual, com avaliação, explicação do que será feito e produtos escolhidos para você.</p>
+    <a class="btn" href="#agendar">Agendar um horário</a>
+  </div>
+</div>
+
+<!-- =====================================================================
+     SEÇÕES DE SERVIÇOS
+     MODELO de cada procedimento (copie e cole para adicionar outro):
+
+       <li>
+         <h3>Nome do procedimento</h3>
+         <span class="price">R$ 000</span>      <-- PREÇO
+         <p>Descrição curta.</p>
+       </li>
+
+     Para REMOVER um procedimento, apague o bloco <li> ... </li> inteiro.
+     ===================================================================== -->
+
+<!-- ---------- CUIDADOS FACIAIS (fundo cinza) ---------- -->
+<section id="faciais" class="sec g">
+  <div class="wrap">
+    <div class="head"><h2>Cuidados Faciais</h2><p>Limpeza, hidratação e cuidados direcionados para a saúde e o conforto da pele do rosto.</p></div>
+    <ul class="menu">
+      <li><h3>Maison Clean</h3><span class="price">R$ 110</span><p>Limpeza de pele: higienização, remoção de impurezas e sensação de frescor e renovação.</p></li>
+      <li><h3>Maison Hydrate</h3><span class="price">R$ 85 a 100</span><p>Hidratação facial para conforto e aparência viçosa da pele.</p></li>
+      <li><h3>Maison Balance</h3><span class="price">R$ 130 a 160</span><p>Cuidado para pele acneica, personalizado conforme necessidade, sensibilidade e tolerância da sua pele.</p></li>
+      <li><h3>Maison Lips</h3><span class="price">R$ 45 a 55</span><p>Spa dos Lábios: ritual que pode incluir hidratação, finalização nutritiva e esfoliação suave, quando apropriada.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ---------- CUIDADOS CORPORAIS (fundo preto) ---------- -->
+<section id="corporais" class="sec">
+  <div class="wrap">
+    <div class="head"><h2>Cuidados Corporais</h2><p>Técnicas manuais realizadas após avaliação individual.</p></div>
+    <ul class="menu">
+      <li><h3>Maison Drainage</h3><span class="price">a partir de R$ 120</span><p>Drenagem linfática: técnica manual, indicada após avaliação, com foco em auxiliar a movimentação da linfa. Valor conforme duração e região atendida.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ---------- TRATAMENTOS ESPECIALIZADOS (fundo cinza) ---------- -->
+<section id="especializados" class="sec g">
+  <div class="wrap">
+    <div class="head"><h2>Tratamentos Especializados</h2><p>Protocolos para regiões específicas, com avaliação antes de começar.</p></div>
+    <ul class="menu">
+      <li><h3>Maison Even Skin</h3><span class="price">a partir de R$ 100</span><p>Cuidado estético das axilas: limpeza profunda e aplicação de ativos cosméticos adequados, para ajudar a melhorar a aparência de manchas e irregularidades no tom.</p></li>
+    </ul>
+    <!-- Observação pequena embaixo da lista (apague se não quiser) -->
+    <p class="note">A região é sensível e exige avaliação prévia. O resultado varia de pessoa para pessoa e não é garantido.</p>
+  </div>
+</section>
+
+<!-- ---------- MAISON PRIVÉ (linha premium, fundo dourado escuro: class="pv") ---------- -->
+<section id="prive" class="sec pv">
+  <div class="wrap">
+    <div class="head"><h2>Maison Privé</h2><p>Experiências mais completas, com mais tempo dedicado, personalização e combinação de etapas pensadas para você.</p></div>
+    <ul class="menu">
+      <li><h3>Maison Signature</h3><span class="price">R$ 169</span><p>Limpeza de pele com ritual hidratante, em uma experiência facial mais completa.</p></li>
+      <li><h3>Maison Glow Ritual</h3><span class="price">R$ 199</span><p>Limpeza de pele, hidratação facial e Spa dos Lábios reunidos em um só atendimento.</p></li>
+      <li><h3>Maison Age Well</h3><span class="price">R$ 179</span><p>Protocolo para a qualidade da pele: hidratação, luminosidade e aparência de linhas finas. Sessão individual ou programa de 4 sessões por R$ 640 (R$ 160 cada).</p></li>
+    </ul>
+    <p class="note">Quantidade e intervalo das sessões do Age Well são definidos na avaliação, conforme a resposta da sua pele.</p>
+  </div>
+</section>
+
+<!-- ---------- PACOTES & PLANOS (fundo cinza) ---------- -->
+<section id="pacotes" class="sec g">
+  <div class="wrap">
+    <div class="head"><h2>Pacotes &amp; Planos de Cuidado</h2><p>Combinações que fazem sentido juntas, com valor total e serviços incluídos sempre informados antes de fechar.</p></div>
+    <ul class="menu">
+      <li><h3>Limpeza de pele + Spa dos Lábios</h3><span class="price">R$ 139</span><p>Maison Clean e Maison Lips no mesmo atendimento.</p></li>
+      <li><h3>Hidratação facial + Spa dos Lábios</h3><span class="price">R$ 119</span><p>Maison Hydrate e Maison Lips no mesmo atendimento.</p></li>
+      <li><h3>Programa Age Well, 4 sessões</h3><span class="price">R$ 640</span><p>Acompanhamento da pele ao longo das sessões.</p></li>
+      <li><h3>Planos de drenagem linfática</h3><span class="price">sob consulta</span><p>Séries de sessões, quando indicadas na avaliação.</p></li>
+    </ul>
+    <p class="note">Número de sessões, prazo de uso e condições de agendamento são combinados e informados antes da contratação.</p>
+  </div>
+</section>
+
+<!-- ===================== AGENDAMENTO & CONTATO ===================== -->
+<section id="agendar" class="sec">
+  <div class="wrap">
+    <div class="head"><h2>Agendamento &amp; Contato</h2><p>Reserve seu horário ou tire dúvidas direto pelo WhatsApp.</p></div>
+    <div class="cols">
+      <!-- Coluna 1: passo a passo -->
+      <div>
+        <h3>Como agendar</h3>
+        <ol>
+          <li>Toque no botão e conte qual cuidado procura.</li>
+          <li>Consulte os horários disponíveis.</li>
+          <li>Confirme o dia, e pronto.</li>
+        </ol>
+        <p class="note">Alguns procedimentos pedem avaliação prévia. Se for o seu caso, avisamos na conversa.</p>
+      </div>
+      <!-- Coluna 2: botão do WhatsApp -->
+      <div>
+        <h3>Fale com a Maison</h3>
+        <p style="color:var(--mute);margin:0 0 20px">Respondemos dúvidas sobre procedimentos, valores e pacotes.</p>
+
+        <!-- ============ WHATSAPP ============
+             Troque 5561999999999 pelo SEU número:
+               55 = Brasil | 61 = seu DDD | depois o número com o 9
+               Sem espaços, parênteses, hífen ou sinal de +
+             O texto depois de ?text= é a mensagem que já aparece pronta
+             (%20 = espaço). Pode editar a frase.                          -->
+        <a class="btn" href="https://wa.me/5561993747100?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Rhavila%20Maison." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== RODAPÉ ===================== -->
+<footer>
+  <b>Rhavila Maison</b>
+  Beleza nos detalhes. Cuidado em cada ritual.
+</footer>
+
+</body>
+</html>
